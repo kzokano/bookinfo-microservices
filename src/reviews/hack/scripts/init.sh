@@ -6,4 +6,4 @@
 # tomcat environment variables
 export JAVA_HOME=$(sdk home java current)
 export CATALINA_HOME=$(sdk home tomcat current)
-export CATALINA_BASE=/workspaces/bookinfo-microservices/src/reviews/catalina-base
+export CATALINA_BASE=/usr/local/sdkman/candidates/tomcat/current
