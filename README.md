@@ -7,3 +7,7 @@ $ docker run -d --rm --name reviews-db -e MYSQL_ROOT_PASSWORD=password -v $(pwd)
 ```
 $ curl http://localhost:8080/reviews?productId=0
 ```
+
+```
+$ docker build -t reviews:dev .
+```
