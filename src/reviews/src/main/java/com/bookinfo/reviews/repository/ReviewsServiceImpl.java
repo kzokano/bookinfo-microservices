@@ -21,8 +21,22 @@ public class ReviewsServiceImpl implements ReviewsService {
     private EntityManager em;
 
     public ReviewsServiceImpl() {
+        Map<String, String> env = System.getenv();
+        Map<String, Object> configOverrides = new HashMap<String, Object>();
+
+        for (String envName : env.keySet()) {
+            if (envName.contains("DB_URL")) {
+                configOverrides.put("jakarta.persistence.jdbc.url", env.get(envName));
+            }
+            if (envName.contains("DB_USER")) {
+                configOverrides.put("jakarta.persistence.jdbc.user", env.get(envName));
+            }
+            if (envName.contains("DB_PASSWORD")) {
+                configOverrides.put("jakarta.persistence.jdbc.password", env.get(envName));
+            }
+        }
         EntityManagerFactory emf =
-            Persistence.createEntityManagerFactory("ReviewsService");
+            Persistence.createEntityManagerFactory("ReviewsService", configOverrides);
         this.em = emf.createEntityManager();
     }
 
